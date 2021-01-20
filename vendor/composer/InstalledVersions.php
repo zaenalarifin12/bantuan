@@ -19,7 +19,7 @@ private static $installed = array (
     'aliases' => 
     array (
     ),
-    'reference' => 'b528b7fc37ba8653af8b35bd4863bcdd2c79efc5',
+    'reference' => '5803adcd743815fe0f77ec4db8dcedc3873c41c6',
     'name' => 'laravel/laravel',
   ),
   'versions' => 
@@ -453,7 +453,7 @@ private static $installed = array (
       'aliases' => 
       array (
       ),
-      'reference' => 'b528b7fc37ba8653af8b35bd4863bcdd2c79efc5',
+      'reference' => '5803adcd743815fe0f77ec4db8dcedc3873c41c6',
     ),
     'laravel/tinker' => 
     array (
@@ -802,15 +802,6 @@ private static $installed = array (
       array (
       ),
       'reference' => 'cd4032040a750077205918c86049aa0f43d22947',
-    ),
-    'realrashid/sweet-alert' => 
-    array (
-      'pretty_version' => 'v3.2.1',
-      'version' => '3.2.1.0',
-      'aliases' => 
-      array (
-      ),
-      'reference' => '5c07913e4679ddc75e26d9333ee6480f46018e94',
     ),
     'rhumsaa/uuid' => 
     array (
@@ -1219,6 +1210,15 @@ private static $installed = array (
       array (
       ),
       'reference' => 'b43b05cf43c1b6d849478965062b6ef73e223bb5',
+    ),
+    'uxweb/sweet-alert' => 
+    array (
+      'pretty_version' => '2.0.5',
+      'version' => '2.0.5.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => 'e9eb83d7d991de0fcb74398a698e0cdfef6d189d',
     ),
     'vlucas/phpdotenv' => 
     array (

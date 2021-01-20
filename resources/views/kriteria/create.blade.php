@@ -16,7 +16,7 @@
                   <div class="col-md-12">
                     <div class="form-group">
                       <label class="bmd-label-floating" >Nama Kriteria</label>
-                      <input type="text" class="form-control" name="nama">
+                      <input type="text" required class="form-control" name="nama">
                     </div>
                   </div>
                   <div class="col-md-12">

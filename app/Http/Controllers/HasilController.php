@@ -37,7 +37,7 @@ class HasilController extends Controller
 
             $j = 0;
             foreach($hasil_per as $item){
-                $nilai_asli[$id][$item->kriteria_id] = $item->nilai;
+                $nilai_asli[$id][$item->kriteria_id] = $item->sub_kriteria_id;
             }
         }
 
@@ -56,7 +56,7 @@ class HasilController extends Controller
 
             $j = 0;
             foreach($hasil_per as $item){
-                $nilai_kriteria[$item->kriteria_id][$j++] = $item->nilai;
+                $nilai_kriteria[$item->kriteria_id][$j++] = $item->sub_kriteria_id;
             }
         }
 
@@ -104,7 +104,7 @@ class HasilController extends Controller
         }
 
         arsort($hasil_alternatif);
-        dd($hasil_alternatif);
+
         return view("hasil.index", compact("hasil_alternatif"));
     }
 }

@@ -31,13 +31,13 @@
                   <div class="col-md-12">
                     <div class="form-group">
                       <label class="bmd-label-floating" >Nama Sub Kriteria</label>
-                      <input type="text" class="form-control" name="nama" value="{{ $subKriteria->nama }}">
+                      <input type="text" required class="form-control" name="nama" value="{{ $subKriteria->nama }}">
                     </div>
                   </div>
                   <div class="col-md-12">
                     <div class="form-group">
                       <label class="bmd-label-floating" >Nilai</label>
-                      <input type="number" class="form-control" name="nilai" value="{{ $subKriteria->nilai}}">
+                      <input type="number" required class="form-control" name="nilai" value="{{ $subKriteria->nilai}}">
                     </div>
                   </div>
                 </div>

@@ -27,6 +27,9 @@ class KriteriaController extends Controller
             "type"  => $request->type
         ]);
 
+        alert()->success('Success Message', 'Kriteria berhasil ditambahkan');
+
+
         return redirect("/kriteria");
     }
 
@@ -46,6 +49,9 @@ class KriteriaController extends Controller
             "type"  => $request->type
         ]);
 
+        alert()->success('Success Message', 'Alternatif berhasil diedit');
+
+
         return redirect("/kriteria");
     }
 
@@ -53,6 +59,8 @@ class KriteriaController extends Controller
     {
         $kriteria  = Kriteria::findOrFail($id);
         $kriteria->delete();
+
+        alert()->success('Success Message', 'Alternatif berhasil dihapus');
 
         return redirect("/kriteria");
     }

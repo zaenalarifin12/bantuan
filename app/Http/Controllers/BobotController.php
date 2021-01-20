@@ -29,6 +29,8 @@ class BobotController extends Controller
             "nilai"         => $request->nilai
         ]);
 
+        alert()->success('Success Message', 'Bobot berhasil ditambahkan');
+
         return redirect("/bobot");
     }
 
@@ -48,6 +50,8 @@ class BobotController extends Controller
             "kriteria_id"   => $request->kriteria_id,
             "nilai"         => $request->nilai
         ]);
+
+        alert()->success('Success Message', 'Bobot berhasil diedit');
 
         return redirect("/bobot");
     }

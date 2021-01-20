@@ -17,6 +17,6 @@ class SubKriteria extends Model
     
     public function alternatif()
     {
-        return $this->belongsToMany(Alternatif::class, "alternatif_kriteria", "kriteria_id", "alternatif_id");
+        return $this->belongsToMany(Alternatif::class, "alternatif_kriteria", "sub_kriteria_id", "alternatif_id");
     }
 }

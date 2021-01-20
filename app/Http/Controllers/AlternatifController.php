@@ -8,12 +8,13 @@ use App\SubKriteria;
 use App\Kriteria;
 use Illuminate\Support\Facades\DB;
 
+
 class AlternatifController extends Controller
 {
     public function index()
     {
         $alternatif = Alternatif::get();
-        $kriteria = Kriteria::orderBy("id")->get();
+        $kriteria   = Kriteria::orderBy("id")->get();
 
         return view("alternatif.index", compact("alternatif", "kriteria"));
     }
@@ -30,17 +31,22 @@ class AlternatifController extends Controller
     public function store(Request $request)
     {
         $alternatif = Alternatif::create([
-            "nama"  => $request->nama
+            "nik"   => $request->nik,
+            "nama"  => $request->nama,
+            "jekel" => $request->jekel,
+            "alamat"=> $request->alamat
         ]);
         
         for ($i=0; $i < count($request->nilai); $i++) { 
             DB::table("alternatif_kriteria")->insert([
                 "alternatif_id"    => $alternatif->id,
-                "kriteria_id"      => $request->id[$i],
-                "nilai"            => $request->nilai[$i]
+                "sub_kriteria_id"  => $request->nilai[$i],
+                "kriteria_id"  => $request->id[$i],
             ]);
         }
     
+        alert()->success('Success Message', 'Alternatif berhasil ditambahkan');
+
         return redirect("/alternatif");
     }
 
@@ -71,9 +77,12 @@ class AlternatifController extends Controller
             DB::table("alternatif_kriteria")->insert([
                 "alternatif_id"    => $alternatif->id,
                 "kriteria_id"      => $request->id[$i],
-                "nilai"            => $request->nilai[$i]
+                "subKriteria"      => $request->nilai[$i]
             ]);
         }
+
+        alert()->success('Success Message', 'Alternatif berhasil diedit');
+
 
         return redirect("/alternatif");
     }
@@ -82,6 +91,8 @@ class AlternatifController extends Controller
     {
         $alternatif = Alternatif::findOrFail($id);
         $alternatif->delete();
+
+        alert()->success('Success Message', 'Alternatif berhasil dihapus');
 
         return redirect("/alternatif");
     }

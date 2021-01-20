@@ -30,6 +30,8 @@ class SubKriteriaController extends Controller
             "nilai"         => $request->nilai
         ]);
 
+        alert()->success('Success Message', 'SubKriteria berhasil ditambahkan');
+
         return redirect("/subkriteria");
     }
 
@@ -52,6 +54,9 @@ class SubKriteriaController extends Controller
             "nilai"         => $request->nilai
         ]);
 
+        alert()->success('Success Message', 'SubKriteria berhasil diedit');
+
+
         return redirect("/subkriteria");
     }
 
@@ -59,6 +64,8 @@ class SubKriteriaController extends Controller
     {
         $subKriteria = SubKriteria::findOrFail($id);
         $subKriteria->delete();
+
+        alert()->success('Success Message', 'SubKriteria berhasil dihapus');
 
         return redirect("/subkriteria");
     }

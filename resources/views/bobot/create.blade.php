@@ -28,7 +28,7 @@
                     <div class="col-md-12">
                         <div class="form-group">
                             <label class="bmd-label-floating" >Bobot</label>
-                            <input type="text" class="form-control" name="nilai">
+                            <input type="text" required class="form-control" name="nilai">
                         </div>
                     </div>
 

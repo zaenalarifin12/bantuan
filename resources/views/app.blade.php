@@ -17,6 +17,9 @@
   <link href="{{ asset("assets/css/material-dashboard.css?v=2.1.2")}}" rel="stylesheet" />
   <!-- CSS Just for demo purpose, don't include it in your project -->
   <link href="{{ asset("assets/demo/demo.css")}}" rel="stylesheet" />
+
+  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
 </head>
 
 <body class="">
@@ -131,6 +134,7 @@
       </footer>
     </div>
   </div>
+  @include('sweet::alert')
   <!--   Core JS Files   -->
   <script src="{{ asset("assets/js/core/jquery.min.js")}}"></script>
   <script src="{{ asset("assets/js/core/popper.min.js")}}"></script>

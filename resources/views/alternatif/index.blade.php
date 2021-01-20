@@ -29,8 +29,8 @@
                       <tr>
                         <td> {{ $loop->iteration }} </td>
                         <td> {{ $item->nama }} </td>
-                        @foreach ($item->kriteria as $item2)
-                          <td> {{ $item2->pivot->nilai }} </td>
+                        @foreach ($item->subKriteria as $item2)
+                        <td> {{$item2->nama}} </td>
                         @endforeach
                         <td>
                           <a href="{{ url("/alternatif/$item->id/edit") }}" class="btn btn-sm btn-warning">Edit</a>
