@@ -100,9 +100,11 @@ class HasilController extends Controller
                 array_push($hasil_per_al, $temp_hasil);
             }
 
-            array_push($hasil_alternatif, array_sum($hasil_per_al));
+            $hasil_alternatif[$key] =  array_sum($hasil_per_al);
         }
 
-        return view("hasil.index");
+        arsort($hasil_alternatif);
+        dd($hasil_alternatif);
+        return view("hasil.index", compact("hasil_alternatif"));
     }
 }

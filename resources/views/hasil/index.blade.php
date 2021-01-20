@@ -22,11 +22,14 @@
                   </thead>
                   <tbody>
                     @foreach ($hasil_alternatif as $key => $item)
-
+                    @php
+                        $al = \App\Alternatif::where(['id' => $key])->first();
+                        
+                    @endphp
                     <tr>
                         <td>{{$loop->iteration}}</td>
-                        <td>penduduk 1</td>
-                        <td>0.75545454</td>
+                        <td>{{ $al->nama }}</td>
+                        <td>{{ $item }} </td>
                     </tr>
                     @endforeach
                   </tbody>

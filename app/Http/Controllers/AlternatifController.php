@@ -46,24 +46,36 @@ class AlternatifController extends Controller
 
     public function edit($id)
     {
-        $subKriteria = SubKriteria::findOrFail($id);
-        $kriteria = Kriteria::get();
+        $alternatif = Alternatif::with(["kriteria.subKriteria" => function($q){
+            $q->orderBy("nilai", "ASC");
+        }])->findOrFail($id);
+        
+        $kriteria = Kriteria::with(["subKriteria" => function($q){
+            $q->orderBy("nilai", "ASC");
+        }])->get();
 
-        return view("subkriteria.edit", compact(["subKriteria", "kriteria"]));
+        return view("alternatif.edit", compact(["alternatif", "kriteria"]));
     }
 
     
     public function update(Request $request, $id)
     {
-        $subKriteria = SubKriteria::findOrFail($id);
-
-        $subKriteria->update([
-            "kriteria_id"   => $request->kriteria_id,
-            "nama"          => $request->nama,
-            "nilai"         => $request->nilai
+        $alternatif = Alternatif::findOrFail($id);
+        $alternatif->update([
+            "nama"  => $request->nama
         ]);
+        
+        DB::table("alternatif_kriteria")->where("alternatif_id", $id)->delete();
 
-        return redirect("/subkriteria");
+        for ($i=0; $i < count($request->nilai); $i++) { 
+            DB::table("alternatif_kriteria")->insert([
+                "alternatif_id"    => $alternatif->id,
+                "kriteria_id"      => $request->id[$i],
+                "nilai"            => $request->nilai[$i]
+            ]);
+        }
+
+        return redirect("/alternatif");
     }
 
     public function destroy($id)
