@@ -10,7 +10,7 @@ class SubKriteriaController extends Controller
 {
     public function index()
     {
-        $subKriteria = SubKriteria::get();
+        $subKriteria = SubKriteria::orderBy("kriteria_id", "ASC")->orderBy("nilai", "ASC")->get();
 
         return view("subkriteria.index", compact("subKriteria"));
     }

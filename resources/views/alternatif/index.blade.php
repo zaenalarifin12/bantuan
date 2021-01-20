@@ -11,28 +11,30 @@
             </div>
             <div class="card-body">
               <div class="row mx-2 d-flex justify-content-end">
-                <a href="{{ url("/subkriteria/create") }}" class="btn btn-sm btn-success">tambah</a>
+                <a href="{{ url("/alternatif/create") }}" class="btn btn-sm btn-success">tambah</a>
               </div>
               
               <div class="table-responsive">
                 <table class="table table-hover">
                   <thead class="">
                     <th> Nomor </th>
-                    <th> Alternatif </th>
                     <th> Nama </th>
-                    <th> Nilai </th>
+                    @foreach ($kriteria as $item)
+                      <th> {{$item->nama}} </th>
+                    @endforeach
                     <th> Aksi </th>
                   </thead>
                   <tbody>
                     @foreach ($alternatif as $item)
                       <tr>
                         <td> {{ $loop->iteration }} </td>
-                        <td> {{ $item->kriteria->nama }} </td>
                         <td> {{ $item->nama }} </td>
-                        <td> {{ $item->nilai }} </td>
+                        @foreach ($item->kriteria as $item2)
+                          <td> {{ $item2->pivot->nilai }} </td>
+                        @endforeach
                         <td>
-                          <a href="{{ url("/subkriteria/$item->id/edit") }}" class="btn btn-sm btn-warning">Edit</a>
-                          <form action="{{ url("/subkriteria/$item->id") }}" method="post" style="display: inline">
+                          <a href="{{ url("/alternatif/$item->id/edit") }}" class="btn btn-sm btn-warning">Edit</a>
+                          <form action="{{ url("/alternatif/$item->id") }}" method="post" style="display: inline">
                             <button type="submit" class="btn btn-sm btn-danger">Hapus</button>
                             @csrf
                             @method("DELETE")

@@ -15,7 +15,7 @@ class CreateBobotsTable extends Migration
     {
         Schema::create('bobot', function (Blueprint $table) {
             $table->id();
-            $table->integer("id_kriteria");
+            $table->integer("kriteria_id");
             $table->integer("nilai");
             $table->timestamps();
         });
@@ -28,6 +28,6 @@ class CreateBobotsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('bobots');
+        Schema::dropIfExists('bobot');
     }
 }

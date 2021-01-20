@@ -19,4 +19,6 @@ Route::resource("kriteria",     "KriteriaController");
 Route::resource("subkriteria",  "SubKriteriaController");
 Route::resource("alternatif",   "AlternatifController");
 Route::resource("bobot",        "BobotController");
+
+Route::get("/hasil",            "HasilController@index");
 // Route::get("/");

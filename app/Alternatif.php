@@ -10,8 +10,11 @@ class Alternatif extends Model
 
     protected $guarded = [];
 
-    public function subKriteria()
+    protected $hidden = ['pivot'];
+
+    public function Kriteria()
     {
-        return $this->belongsToMany(SubKriteria::class, "alternatif_kriteria", "alternatif_id", "sub_kriteria_id");
+        return $this->belongsToMany(Kriteria::class, "alternatif_kriteria", "alternatif_id", "kriteria_id")
+        ->withPivot("nilai");
     }
 }
