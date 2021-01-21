@@ -89,8 +89,12 @@
                   </p>
                 </a>
                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownProfile">
-             
-                  <a class="dropdown-item" href="#">Log out</a>
+                  
+                  <form action="{{ url("/logout") }}" method="post">
+                    @csrf
+                    <button type="submit" class="btn btn-danger btn-sm">Log Out</button>
+                  </form>
+                  
                 </div>
               </li>
             </ul>

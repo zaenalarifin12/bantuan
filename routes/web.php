@@ -13,14 +13,17 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', "AppController@index");
+Route::group(["middleware" => ["auth"]], function() {
+    Route::get('/', "AppController@index");
 
-Route::resource("kriteria",     "KriteriaController");
-Route::resource("subkriteria",  "SubKriteriaController");
-Route::resource("alternatif",   "AlternatifController");
-Route::resource("bobot",        "BobotController");
+    Route::resource("kriteria",     "KriteriaController");
+    Route::resource("subkriteria",  "SubKriteriaController");
+    Route::resource("alternatif",   "AlternatifController");
+    Route::resource("bobot",        "BobotController");
+    
+    Route::get("/hasil",            "HasilController@index");
+});
 
-Route::get("/hasil",            "HasilController@index");
 // Route::get("/");
 Auth::routes();
 
