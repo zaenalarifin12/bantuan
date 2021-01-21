@@ -148,10 +148,10 @@
                             
                             if($kriteria->type == "cost"){
                                 $temp_hasil = min($nilai_kriteria[$item1]) / $value1;
-                                echo "<p> r <sub>$i$j</sub>  : " . "min{" . implode(",", $nilai_kriteria[$item1]) . "}" . " / $value1" . " = $temp_hasil" . "</p>";
+                                echo "<p> r <sub>$i$j</sub>  : " . "min{" . implode(",", $nilai_kriteria[$item1]) . "}" . " / $value1" . " = " . round($temp_hasil, 4) . "</p>";
                             }else{
                                 $temp_hasil = $value1 / max($nilai_kriteria[$item1]);
-                                echo "<p> r <sub>$i$j</sub> : " . "$value1 / " . "max{" . implode(",", $nilai_kriteria[$item1]) . "}" . " = $temp_hasil" . "</p>";
+                                echo "<p> r <sub>$i$j</sub> : " . "$value1 / " . "max{" . implode(",", $nilai_kriteria[$item1]) . "}" . " = " . round($temp_hasil, 4) . "</p>";
                             }                
 
                             $nilai_normalisasi[$key][$item1] = $temp_hasil;
@@ -169,7 +169,7 @@
                 @foreach ($nilai_normalisasi as $key => $value)
                   <tr style="text-align: center;">
                   @foreach ($value as $key2 => $value2)
-                      <td> {{ $value2 }} </td>
+                      <td> {{ round($value2, 4)  }} </td>
                   @endforeach
                   </tr>
                 @endforeach
@@ -192,7 +192,7 @@
                     <tr>
                         <td>{{$loop->iteration}}</td>
                         <td>{{ $al->nama }}</td>
-                        <td>{{ $item }} </td>
+                        <td>{{ round($item, 4) }} </td>
                     </tr>
                     @endforeach
                   </tbody>
