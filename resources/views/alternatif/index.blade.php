@@ -34,8 +34,9 @@
                         @endforeach
                         <td>
                           <a href="{{ url("/alternatif/$item->id/edit") }}" class="btn btn-sm btn-warning">Edit</a>
+                          
                           <form action="{{ url("/alternatif/$item->id") }}" method="post" style="display: inline">
-                            <button type="submit" class="btn btn-sm btn-danger">Hapus</button>
+                            <button  onclick="return confirm('Apakah Kamu yakin untuk menghapus?')" type="submit" class="btn btn-sm btn-danger deletebutton ">Hapus</button>
                             @csrf
                             @method("DELETE")
                           </form>

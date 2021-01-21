@@ -14,10 +14,12 @@ class CreateBobotsTable extends Migration
     public function up()
     {
         Schema::create('bobot', function (Blueprint $table) {
-            $table->id();
+            $table->increments('id');
             $table->integer("kriteria_id");
             $table->integer("nilai");
             $table->timestamps();
+
+            $table->foreign('kriteria_id')->references('id')->on('kriteria')->onDelete('cascade');
         });
     }
 

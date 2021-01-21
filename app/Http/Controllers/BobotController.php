@@ -17,7 +17,15 @@ class BobotController extends Controller
 
     public function create()
     {
-        $kriteria = Kriteria::get();
+        $bobot      = Bobot::get("kriteria_id")->toArray();
+        
+        $temp_kriteria = [];
+
+        foreach($bobot as $item){
+            array_push($temp_kriteria, $item["kriteria_id"]);
+        }
+
+        $kriteria   = Kriteria::whereNotIn('id', $temp_kriteria)->get();
 
         return view("bobot.create", compact("kriteria"));
     }

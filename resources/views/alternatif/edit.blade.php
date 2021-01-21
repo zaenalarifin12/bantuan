@@ -13,43 +13,61 @@
             <div class="card-body">
               <form action="{{ url("/alternatif/$alternatif->id") }}" method="POST">
                 <div class="row">
+                  
                   <div class="col-md-12">
                     <div class="form-group">
-                      <label class="bmd-label-floating" >Nama Penduduk</label>
-                      <input type="text" class="form-control" name="nama" value="{{ $alternatif->nama }}">
+                      <label class="bmd-label-floating" >NIK</label>
+                      <input type="text" required class="form-control" name="nik" value="{{ $alternatif->nik }}">
                     </div>
                   </div>
 
-                  {{-- kriteria --}}
+                  <div class="col-md-12">
+                    <div class="form-group">
+                      <label class="bmd-label-floating" >Nama Penduduk</label>
+                      <input type="text" required class="form-control" name="nama" value="{{ $alternatif->nama }}">
+                    </div>
+                  </div>
 
-                  <p>==================== BELUM FIX =============================</p>
-                  
-                  <p>==================== SOLUSI , DIHAPUS SAJA ALTERNATIFNYA =============</p>
+                  <div class="col-md-12">
+                    <div class="form-group">
+                      <label class="bmd-label-floating" >Jenis Kelamin</label>
+                      <select name="jekel" id="" required class="fbrowser-default custom-select">
+                        @if ($alternatif->jekel == "laki-laki")
+                          <option value="laki-laki" selected>laki-laki</option>
+                          <option value="perempuan">perempuan</option>
+                        @elseif ($alternatif->jekel == "perempuan")
+                          <option value="laki-laki">laki-laki</option>
+                          <option value="perempuan" selected>perempuan</option>
+                        @endif
+                        
+                      </select>
+                    </div>
+                  </div>
+
+                  <div class="col-md-12">
+                    <div class="form-group">
+                      <label class="bmd-label-floating" >Alamat</label>
+                      <textarea name="alamat" class="form-control" required id="" cols="30" rows="10">
+                        {{ $alternatif->nik }}
+                      </textarea>
+                      
+                    </div>
+                  </div>
+
                   @foreach ($kriteria as $item)
                   <div class="col-md-12">
                     <div class="form-group">
                       <label class="">{{$item->nama}}</label>
                       <select name="nilai[]" id="" class="fbrowser-default custom-select">
-                          @foreach ($item->subKriteria as $item2)
-                            @foreach ($alternatif->kriteria as $item_al)
-                                @foreach ($item_al->subKriteria as $item2_al)
-                                    
-                                    <option
-                                        @if ($item_al->id == $item->id)
-                                            selected
-                                        @endif
-                                    value="">{{$item2_al->id}}</option>
-                                    
-                                @endforeach
-                                {{-- uji supaya 1 kali pemanggilan nilai --}}
-                                {{-- @if ($item_al->id == $item->id)  --}}
-                                    
-                                    {{-- <option >{{ $item2->nilai }}</option>     --}}
-                                {{-- @endif --}}
-                                
-                            @endforeach
-                          @endforeach
-                          {{-- {{ $item2->nilai }} --}}
+                        @foreach ($item->subKriteria as $item2)
+                          <option
+                            @foreach ($alternatif->subKriteria as $item_al)
+                                @if ($item2->id == $item_al->id)
+                                    selected
+                                @endif
+                            @endforeach 
+                          value="{{ $item2->id }}">{{ $item2->nama }}</option>
+                        @endforeach
                       </select>
                       <input type="hidden" name="id[]" value="{{ $item->id }}">
                     </div>
@@ -58,7 +76,8 @@
                   
                 </div>
                 @csrf
-                <button type="submit" class="btn btn-primary pull-right">Buat</button>
+                @method("PUT")
+                <button type="submit" class="btn btn-primary pull-right">Edit</button>
                 <div class="clearfix"></div>
               </form>
             </div>

@@ -14,11 +14,13 @@ class CreateSubKriteriasTable extends Migration
     public function up()
     {
         Schema::create('sub_kriteria', function (Blueprint $table) {
-            $table->id();
+            $table->increments('id');
             $table->string("kriteria_id");
             $table->string("nama");
             $table->integer("nilai");
             $table->timestamps();
+
+            $table->foreign('kriteria_id')->references('id')->on('kriteria')->onDelete('cascade');
         });
     }
 

@@ -52,8 +52,8 @@ class AlternatifController extends Controller
 
     public function edit($id)
     {
-        $alternatif = Alternatif::with(["kriteria.subKriteria" => function($q){
-            $q->orderBy("nilai", "ASC");
+        $alternatif = Alternatif::with(["subKriteria" => function($q){
+            $q->orderBy("sub_kriteria_id", "ASC");
         }])->findOrFail($id);
         
         $kriteria = Kriteria::with(["subKriteria" => function($q){
@@ -67,8 +67,12 @@ class AlternatifController extends Controller
     public function update(Request $request, $id)
     {
         $alternatif = Alternatif::findOrFail($id);
+
         $alternatif->update([
-            "nama"  => $request->nama
+            "nik"   => $request->nik,
+            "nama"  => $request->nama,
+            "jekel" => $request->jekel,
+            "alamat"=> $request->alamat
         ]);
         
         DB::table("alternatif_kriteria")->where("alternatif_id", $id)->delete();
@@ -76,15 +80,15 @@ class AlternatifController extends Controller
         for ($i=0; $i < count($request->nilai); $i++) { 
             DB::table("alternatif_kriteria")->insert([
                 "alternatif_id"    => $alternatif->id,
-                "kriteria_id"      => $request->id[$i],
-                "subKriteria"      => $request->nilai[$i]
+                "sub_kriteria_id"  => $request->nilai[$i],
+                "kriteria_id"  => $request->id[$i],
             ]);
         }
-
+    
         alert()->success('Success Message', 'Alternatif berhasil diedit');
 
-
         return redirect("/alternatif");
+        
     }
 
     public function destroy($id)
