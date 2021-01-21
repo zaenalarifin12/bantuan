@@ -30,32 +30,33 @@
         </a></div>
       <div class="sidebar-wrapper">
         <ul class="nav">
-          <li class="nav-item active  ">
+          <li class="nav-item {{ Request::is('/') ? 'active' : '' }}  ">
             <a class="nav-link" href="{{ url("/") }}">
               <p>Dashboard</p>
             </a>
           </li>
-          <li class="nav-item ">
+          <li class="nav-item {{ Request::is('/kriteria') ? 'active' : '' }}">
             <a class="nav-link" href="{{ url("/kriteria") }}">
               <p>Kriteria</p>
             </a>
           </li>
-          <li class="nav-item ">
-            <a class="nav-link" href="{{ url("/subkriteria") }}">
-              <p>sub kriteria</p>
-            </a>
-          </li>
-          <li class="nav-item ">
-            <a class="nav-link" href="{{ url("/alternatif") }}">
-              <p>alternatif</p>
-            </a>
-          </li>
-          <li class="nav-item ">
+          <li class="nav-item {{ (request()->is('/bobot*')) ? 'active' : '' }}">
             <a class="nav-link" href="{{ url("/bobot") }}">
               <p>bobot</p>
             </a>
           </li>
-          <li class="nav-item ">
+          <li class="nav-item {{ (request()->is('/subkriteria*')) ? 'active' : '' }}">
+            <a class="nav-link" href="{{ url("/subkriteria") }}">
+              <p>sub kriteria</p>
+            </a>
+          </li>
+          <li class="nav-item {{ (request()->is('/alternatif')) ? 'active' : '' }}">
+            <a class="nav-link" href="{{ url("/alternatif") }}">
+              <p>alternatif</p>
+            </a>
+          </li>
+          
+          <li class="nav-item {{ (request()->is('/hasil')) ? 'active' : '' }}">
             <a class="nav-link" href="{{ url("/hasil") }}">
               <p>Hasil</p>
             </a>

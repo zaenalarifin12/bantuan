@@ -22,3 +22,6 @@ Route::resource("bobot",        "BobotController");
 
 Route::get("/hasil",            "HasilController@index");
 // Route::get("/");
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');

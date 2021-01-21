@@ -15,7 +15,7 @@ class CreateBobotsTable extends Migration
     {
         Schema::create('bobot', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer("kriteria_id");
+            $table->unsignedInteger("kriteria_id");
             $table->integer("nilai");
             $table->timestamps();
 

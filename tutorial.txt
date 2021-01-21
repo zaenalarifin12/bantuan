@@ -1,0 +1,18 @@
+# cara menjalankan projek ini
+
+- download melalui github
+    git clone https://github.com/zaenalarifin12/bantuan
+
+- untuk update versi terbaru bisa 
+    <di folder tersebut> git pull 
+
+- ganti nama databasemu di file .env [DB_DATABASE]
+
+
+- struktur core folder projek
+    -> app
+        -> controller -----> tempat mengolah data
+        // nama-nama table 
+    -> resources/views -----> tempat menampilkan html
+    -> routes/web.php ------> tempat penempatan controller di url()
+    -> .env ----------------> urusan dengan database
