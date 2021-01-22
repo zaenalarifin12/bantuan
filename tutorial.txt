@@ -16,3 +16,7 @@
     -> resources/views -----> tempat menampilkan html
     -> routes/web.php ------> tempat penempatan controller di url()
     -> .env ----------------> urusan dengan database
+
+
+    email       -> admin@gmail.com
+    password    -> admin1234

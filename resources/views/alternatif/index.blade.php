@@ -18,7 +18,10 @@
                 <table class="table table-hover">
                   <thead class="">
                     <th> Nomor </th>
+                    <th> NIK </th>
                     <th> Nama </th>
+                    <th> Jenis Kelamin </th>
+                    <th> Alamat </th>
                     @foreach ($kriteria as $item)
                       <th> {{$item->nama}} </th>
                     @endforeach
@@ -28,7 +31,10 @@
                     @foreach ($alternatif as $item)
                       <tr>
                         <td> {{ $loop->iteration }} </td>
+                        <td> {{ $item->nik }} </td>
                         <td> {{ $item->nama }} </td>
+                        <td> {{ $item->jekel }} </td>
+                        <td> {{ $item->alamat }} </td>
                         @foreach ($item->subKriteria as $item2)
                         <td> {{$item2->nama}} </td>
                         @endforeach
