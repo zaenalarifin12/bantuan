@@ -180,7 +180,10 @@
                 <table class="table table-hover">
                   <thead class="">
                     <th> Nomor </th>
+                    <th> NIK </th>
                     <th> Nama </th>
+                    <th> Jenis Kelamin </th>
+                    <th> Alamat </th>
                     <th> hasil </th>
                   </thead>
                   <tbody>
@@ -191,7 +194,10 @@
                     @endphp
                     <tr>
                         <td>{{$loop->iteration}}</td>
+                        <td>{{ $al->nik }}</td>
                         <td>{{ $al->nama }}</td>
+                        <td>{{ $al->jekel }}</td>
+                        <td>{{ $al->alamat }}</td>
                         <td>{{ round($item, 4) }} </td>
                     </tr>
                     @endforeach
