@@ -1,8 +1,32 @@
-@extends('app')
+<!DOCTYPE html>
+<html lang="en">
+<style>
 
-@section('content')
+#customers {
+  font-family: Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
 
+#customers td, #customers th {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
 
+#customers tr:nth-child(even){background-color: #f2f2f2;}
+
+#customers tr:hover {background-color: #ddd;}
+
+#customers th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #4CAF50;
+  color: white;
+}
+</style>
+<body>
+    
 <div class="content">
     <div class="container-fluid">
       <div class="row">
@@ -109,94 +133,26 @@
                 arsort($hasil_alternatif);
               @endphp 
 
-
-              {{-- kriteria --}}
-              <p class="font-weight-bold">Kriteria</p>
-              <table class="table table-hover">
-                @foreach ($nilai_kriteria as $key => $value)
-                  @php
-                    $kriteria = \App\Kriteria::findOrFail($key);  
-                  @endphp
-                  <th style="text-align: center;">
-                    {{$kriteria->nama}}
-                  </th>
-                @endforeach
-
-                @foreach ($nilai_kriteria as $key => $value)
-                  <tr style="text-align: center;">
-                  @foreach ($value as $key2 => $value2)
-                      <td> {{ $value2 }} </td>
-                  @endforeach
-                  </tr>
-                @endforeach
-              </table>
-
-              <p class="font-weight-bold"> Normalisasi Matrix </p>
-             
-                @php
-                    $nilai_normalisasi = [];
-                
-                    $i = 1;
-                    foreach($nilai_asli as $key => $value){
-                        echo "<p>Kriteria C$i </p>";
-                        
-                        $j = 1;
-                        foreach($value as $item1 => $value1){
-                          
-                            // jika kriteria == cost 
-                            $kriteria = \App\Kriteria::findOrFail($item1);
-                            
-                            if($kriteria->type == "cost"){
-                                $temp_hasil = min($nilai_kriteria[$item1]) / $value1;
-                                echo "<p> r <sub>$i$j</sub>  : " . "min{" . implode(",", $nilai_kriteria[$item1]) . "}" . " / $value1" . " = " . round($temp_hasil, 4) . "</p>";
-                            }else{
-                                $temp_hasil = $value1 / max($nilai_kriteria[$item1]);
-                                echo "<p> r <sub>$i$j</sub> : " . "$value1 / " . "max{" . implode(",", $nilai_kriteria[$item1]) . "}" . " = " . round($temp_hasil, 4) . "</p>";
-                            }                
-
-                            $nilai_normalisasi[$key][$item1] = $temp_hasil;
-
-                            $j++;
-                        }
-                        echo "<br>";
-                          $i++;
-                    }
-                @endphp
-            
-
-              <p class="font-weight-bold"> <b>Nilai Normalisasi</b> </p>
-              <table class="table table-hover">
-                @foreach ($nilai_normalisasi as $key => $value)
-                  <tr style="text-align: center;">
-                  @foreach ($value as $key2 => $value2)
-                      <td> {{ round($value2, 4)  }} </td>
-                  @endforeach
-                  </tr>
-                @endforeach
-              </table>
-
               <div class="d-flex justify-content-between">
-                <p class="font-weight-bold">Hasil </p>
-                <a href="{{ url("/hasil/cetak") }}" class="btn btn-success btn-sm">Cetak</a>
+                <p class="font-weight-bold">Penduduk </p>
               </div>
               
-              <div class="table-responsive">
-                <table class="table table-hover">
-                  <thead class="">
+              <div id="customers">
+                <table class="">
+                  <tr class="">
                     <th> Nomor </th>
                     <th> NIK </th>
                     <th> Nama </th>
                     <th> Jenis Kelamin </th>
                     <th> Alamat </th>
                     <th> hasil </th>
-                  </thead>
-                  <tbody>
+                  </tr>
+                  
                     @foreach ($hasil_alternatif as $key => $item)
+                    <tr>
                     @php
                         $al = \App\Alternatif::where(['id' => $key])->first();
-                        
                     @endphp
-                    <tr>
                         <td>{{$loop->iteration}}</td>
                         <td>{{ $al->nik }}</td>
                         <td>{{ $al->nama }}</td>
@@ -205,7 +161,7 @@
                         <td>{{ round($item, 4) }} </td>
                     </tr>
                     @endforeach
-                  </tbody>
+                 
                 </table>
               </div>
             </div>
@@ -214,4 +170,7 @@
       </div>
     </div>
   </div>
-@endsection
+
+
+</body>
+</html>

@@ -21,7 +21,8 @@ Route::group(["middleware" => ["auth"]], function() {
     Route::resource("alternatif",   "AlternatifController");
     Route::resource("bobot",        "BobotController");
     
-    Route::get("/hasil",            "HasilController@index");
+    Route::get("/hasil",                    "HasilController@index");
+    Route::get("/hasil/cetak",              "HasilController@cetak");
 });
 
 // Route::get("/");
