@@ -45,9 +45,9 @@ class BobotController extends Controller
     public function edit($id)
     {
         $bobot = Bobot::findOrFail($id);
-        $kriteria = Kriteria::get();
 
-        return view("bobot.edit", compac("bobot", "kriteria"));
+        
+        return view("bobot.edit", compact("bobot"));
     }
 
     public function update(Request $request, $id)
