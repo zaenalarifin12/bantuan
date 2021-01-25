@@ -32,6 +32,7 @@ class BobotController extends Controller
 
     public function store(Request $request)
     {
+        
         Bobot::create([
             "kriteria_id"   => $request->kriteria_id,
             "nilai"         => $request->nilai
@@ -69,6 +70,8 @@ class BobotController extends Controller
         $bobot = Bobot::findOrFail($id);
         $bobot->delete();
         
+        alert()->success('Success Message', 'Bobot berhasil dihapus');
+
         return redirect("/bobot");
     }
 }

@@ -18,7 +18,6 @@ class CreateAlternatifKriteriaTable extends Migration
             $table->unsignedInteger("alternatif_id");
             $table->unsignedInteger("kriteria_id");
             $table->unsignedInteger("sub_kriteria_id");
-            $table->float("nilai");
             $table->timestamps();
 
             $table->foreign('kriteria_id')->references('id')->on('kriteria')->onDelete('cascade');

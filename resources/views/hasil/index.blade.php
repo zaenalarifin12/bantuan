@@ -45,8 +45,7 @@
                 }
 
                 // ==================== buat array kriteria
-                $nilai_kriteria = [];
-
+                
                 for ($i=0; $i < count($kriteria); $i++) { 
 
                     $id = $kriteria[$i]["id"];
@@ -63,6 +62,23 @@
                     }
                 }
 
+                $nilai_alternatif = [];
+
+                for ($i=0; $i < count($alternatif); $i++) { 
+
+                  $id = $alternatif[$i]["id"];
+
+                  $hasil_per = \Illuminate\Support\Facades\DB::table("alternatif_kriteria")
+                  ->orderBy("alternatif_id", "ASC")
+                  ->orderBy("kriteria_id", "ASC")
+                  ->where("alternatif_id", $id)
+                  ->get()->toArray();
+
+                  $j = 0;
+                  foreach($hasil_per as $item){
+                      $nilai_alternatif[$item->alternatif_id][$item->kriteria_id] = $item->sub_kriteria_id;
+                  }
+                }
 
                 $nilai_normalisasi = [];
                 
@@ -113,22 +129,41 @@
               {{-- kriteria --}}
               <p class="font-weight-bold">Kriteria</p>
               <table class="table table-hover">
+                
+                <tr>
+                  <th>Alternatif</th>
                 @foreach ($nilai_kriteria as $key => $value)
+              
                   @php
                     $kriteria = \App\Kriteria::findOrFail($key);  
                   @endphp
                   <th style="text-align: center;">
                     {{$kriteria->nama}}
                   </th>
-                @endforeach
 
-                @foreach ($nilai_kriteria as $key => $value)
-                  <tr style="text-align: center;">
-                  @foreach ($value as $key2 => $value2)
-                      <td> {{ $value2 }} </td>
-                  @endforeach
-                  </tr>
+                
                 @endforeach
+              </tr>
+
+              @foreach ($nilai_alternatif as $key1 => $value1)
+                      <tr>
+                        @php
+                            $alternatif = \App\Alternatif::findOrFail($key1);  
+                        @endphp
+                        <td class="text-center">
+                          {{ $alternatif->nama }}
+                        </td>
+                        @foreach ($value1 as $key2 => $value2)
+                          @php
+                              $sub = \App\SubKriteria::findOrFail($value2);  
+                          @endphp
+                          <td class="text-center">
+                            {{ $sub->nama }}
+                          </td>    
+                          
+                        @endforeach
+                      </tr>
+                  @endforeach
               </table>
 
               <p class="font-weight-bold"> Normalisasi Matrix </p>

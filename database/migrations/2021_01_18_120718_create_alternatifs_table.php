@@ -15,7 +15,10 @@ class CreateAlternatifsTable extends Migration
     {
         Schema::create('alternatif', function (Blueprint $table) {
             $table->increments('id');
+            $table->string("nik");
             $table->string("nama");
+            $table->text("alamat");
+            $table->string("jekel");
             $table->timestamps();
         });
     }

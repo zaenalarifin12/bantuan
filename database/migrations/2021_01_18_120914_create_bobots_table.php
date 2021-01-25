@@ -16,7 +16,7 @@ class CreateBobotsTable extends Migration
         Schema::create('bobot', function (Blueprint $table) {
             $table->increments('id');
             $table->unsignedInteger("kriteria_id");
-            $table->integer("nilai");
+            $table->float("nilai");
             $table->timestamps();
 
             $table->foreign('kriteria_id')->references('id')->on('kriteria')->onDelete('cascade');
