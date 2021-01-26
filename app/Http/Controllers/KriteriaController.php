@@ -51,7 +51,6 @@ class KriteriaController extends Controller
 
         alert()->success('Success Message', 'Alternatif berhasil diedit');
 
-
         return redirect("/kriteria");
     }
 

@@ -41,11 +41,15 @@
                         <td>
                           <a href="{{ url("/alternatif/$item->id/edit") }}" class="btn btn-sm btn-warning">Edit</a>
                           
-                          <form action="{{ url("/alternatif/$item->id") }}" method="post" style="display: inline">
-                            <button  onclick="return confirm('Apakah Kamu yakin untuk menghapus?')" type="submit" class="btn btn-sm btn-danger deletebutton ">Hapus</button>
+                          <button type="button" id="{{ $item->id }}" class="btn btn-sm btn-danger delete">Hapus</button>
+
+                          <form id="logout-{{ $item->id }}" action="{{ url("/alternatif/$item->id") }}" method="post" style="display: inline">
+                            
                             @csrf
                             @method("DELETE")
                           </form>
+
+                          
                         </td>
                       </tr>
                     @endforeach
@@ -60,3 +64,37 @@
     </div>
   </div>
 @endsection
+
+
+@section('script')
+
+<script type="text/javascript">
+  
+  $( ".delete" ).click(function(e) {
+
+    e.preventDefault(); 
+    var id = $(this).attr("id")
+
+      $.confirm({
+          title: 'Confirm!',
+          content: 'Anda Yakin akan menghapus data ini!',
+          buttons: {
+              somethingElse: {
+                  text: 'Hapus',
+                  btnClass: 'btn-danger',
+                  keys: ['enter', 'shift'],
+                  action: function(){
+                      // $.alert('Something else?');
+                      
+                      $( `#logout-${id}` ).submit()
+                  }
+              },
+              cancel: function () {
+                  $.alert('Canceled!');
+              }
+          }
+      });
+  });
+  
+</script>
+@endsection 

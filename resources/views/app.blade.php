@@ -18,8 +18,11 @@
   <!-- CSS Just for demo purpose, don't include it in your project -->
   <link href="{{ asset("assets/demo/demo.css")}}" rel="stylesheet" />
 
+  <script src="{{ asset("assets/js/core/jquery.min.js")}}"></script>
   <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.js"></script>
 </head>
 
 <body class="">
@@ -139,9 +142,9 @@
       </footer>
     </div>
   </div>
-  @include('sweet::alert')
+  
   <!--   Core JS Files   -->
-  <script src="{{ asset("assets/js/core/jquery.min.js")}}"></script>
+  
   <script src="{{ asset("assets/js/core/popper.min.js")}}"></script>
   <script src="{{ asset("assets/js/core/bootstrap-material-design.min.js")}}"></script>
   <script src="{{ asset("assets/js/plugins/perfect-scrollbar.jquery.min.js")}}"></script>
@@ -362,6 +365,7 @@
     });
   </script>
 
+@include('sweet::alert')
 
   @yield('script')
 

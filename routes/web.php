@@ -17,6 +17,10 @@ Route::group(["middleware" => ["auth"]], function() {
     Route::get('/', "AppController@index");
 
     Route::resource("kriteria",     "KriteriaController");
+
+    Route::post("/destroyKriteria/{id}",     "KriteriaController@destroy");
+
+
     Route::resource("subkriteria",  "SubKriteriaController");
     Route::resource("alternatif",   "AlternatifController");
     Route::resource("bobot",        "BobotController");
