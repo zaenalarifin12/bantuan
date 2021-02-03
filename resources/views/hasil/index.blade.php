@@ -40,7 +40,10 @@
 
                     $j = 0;
                     foreach($hasil_per as $item){
-                        $nilai_asli[$id][$item->kriteria_id] = $item->sub_kriteria_id;
+
+                      $x = \App\SubKriteria::findOrFail($item->sub_kriteria_id);
+
+                      $nilai_asli[$id][$item->kriteria_id] = $x->nilai;
                     }
                 }
 
@@ -58,7 +61,10 @@
 
                     $j = 0;
                     foreach($hasil_per as $item){
-                        $nilai_kriteria[$item->kriteria_id][$j++] = $item->sub_kriteria_id;
+
+                        $x = \App\SubKriteria::findOrFail($item->sub_kriteria_id);
+
+                        $nilai_kriteria[$item->kriteria_id][$j++] = $x->nilai;
                     }
                 }
 

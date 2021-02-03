@@ -520,6 +520,7 @@ class ComposerStaticInit92bc173b6e30342857e3e29792a8fe4e
     );
 
     public static $classMap = array (
+        'AlternatifSeeder' => __DIR__ . '/../..' . '/database/seeds/AlternatifSeeder.php',
         'App\\Alternatif' => __DIR__ . '/../..' . '/app/Alternatif.php',
         'App\\Bobot' => __DIR__ . '/../..' . '/app/Bobot.php',
         'App\\Console\\Kernel' => __DIR__ . '/../..' . '/app/Console/Kernel.php',
@@ -2553,6 +2554,7 @@ class ComposerStaticInit92bc173b6e30342857e3e29792a8fe4e
         'Illuminate\\View\\ViewName' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/View/ViewName.php',
         'Illuminate\\View\\ViewServiceProvider' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/View/ViewServiceProvider.php',
         'JsonException' => __DIR__ . '/..' . '/symfony/polyfill-php73/Resources/stubs/JsonException.php',
+        'KriteriaSeeder' => __DIR__ . '/../..' . '/database/seeds/KriteriaSeeder.php',
         'Laravel\\Tinker\\ClassAliasAutoloader' => __DIR__ . '/..' . '/laravel/tinker/src/ClassAliasAutoloader.php',
         'Laravel\\Tinker\\Console\\TinkerCommand' => __DIR__ . '/..' . '/laravel/tinker/src/Console/TinkerCommand.php',
         'Laravel\\Tinker\\TinkerCaster' => __DIR__ . '/..' . '/laravel/tinker/src/TinkerCaster.php',
@@ -4316,6 +4318,7 @@ class ComposerStaticInit92bc173b6e30342857e3e29792a8fe4e
         'SebastianBergmann\\Type\\VoidType' => __DIR__ . '/..' . '/sebastian/type/src/VoidType.php',
         'SebastianBergmann\\Version' => __DIR__ . '/..' . '/sebastian/version/src/Version.php',
         'Stringable' => __DIR__ . '/..' . '/symfony/polyfill-php80/Resources/stubs/Stringable.php',
+        'SubKriteriaSeeder' => __DIR__ . '/../..' . '/database/seeds/SubKriteriaSeeder.php',
         'Svg\\DefaultStyle' => __DIR__ . '/..' . '/phenx/php-svg-lib/src/Svg/DefaultStyle.php',
         'Svg\\Document' => __DIR__ . '/..' . '/phenx/php-svg-lib/src/Svg/Document.php',
         'Svg\\Gradient\\Stop' => __DIR__ . '/..' . '/phenx/php-svg-lib/src/Svg/Gradient/Stop.php',

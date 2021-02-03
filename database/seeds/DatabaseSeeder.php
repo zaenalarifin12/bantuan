@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
 
 class DatabaseSeeder extends Seeder
 {
@@ -11,7 +12,14 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
+
+        DB::table("alternatif")->delete();
+        DB::table("kriteria")->delete();
+        DB::table("users")->delete();
+
         $this->call(UserSeeder::class);
-        $this->call(DataSeeder::class);
+        $this->call(KriteriaSeeder::class);
+        $this->call(SubKriteriaSeeder::class);
+        $this->call(AlternatifSeeder::class);
     }
 }

@@ -12,24 +12,7 @@ class DataSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('kriteria')->insert([
-            [
-                'type'      => 'cost',
-                'nama'      => 'jumlah penghasilan'
-            ],
-            [
-                'type'      => 'benefit',
-                'nama'      => 'jumlah tanggungan'
-            ],
-            [
-                'type'      => 'benefit',
-                'nama'      => 'usia'
-            ],
-            [
-                'type'      => 'benefit',
-                'nama'      => 'status perkawinan'
-            ]
-        ]);
+        
 
         DB::table('sub_kriteria')->insert([
             [
