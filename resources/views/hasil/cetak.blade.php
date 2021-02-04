@@ -64,13 +64,15 @@
 
                     $j = 0;
                     foreach($hasil_per as $item){
-                        $nilai_asli[$id][$item->kriteria_id] = $item->sub_kriteria_id;
+
+                      $x = \App\SubKriteria::findOrFail($item->sub_kriteria_id);
+
+                      $nilai_asli[$id][$item->kriteria_id] = $x->nilai;
                     }
                 }
 
                 // ==================== buat array kriteria
-                $nilai_kriteria = [];
-
+                
                 for ($i=0; $i < count($kriteria); $i++) { 
 
                     $id = $kriteria[$i]["id"];
@@ -83,10 +85,30 @@
 
                     $j = 0;
                     foreach($hasil_per as $item){
-                        $nilai_kriteria[$item->kriteria_id][$j++] = $item->sub_kriteria_id;
+
+                        $x = \App\SubKriteria::findOrFail($item->sub_kriteria_id);
+
+                        $nilai_kriteria[$item->kriteria_id][$j++] = $x->nilai;
                     }
                 }
 
+                $nilai_alternatif = [];
+
+                for ($i=0; $i < count($alternatif); $i++) { 
+
+                  $id = $alternatif[$i]["id"];
+
+                  $hasil_per = \Illuminate\Support\Facades\DB::table("alternatif_kriteria")
+                  ->orderBy("alternatif_id", "ASC")
+                  ->orderBy("kriteria_id", "ASC")
+                  ->where("alternatif_id", $id)
+                  ->get()->toArray();
+
+                  $j = 0;
+                  foreach($hasil_per as $item){
+                      $nilai_alternatif[$item->alternatif_id][$item->kriteria_id] = $item->sub_kriteria_id;
+                  }
+                }
 
                 $nilai_normalisasi = [];
                 
@@ -118,6 +140,7 @@
                     
                     $hasil_per_al = [];
 
+                    
                     foreach($value as $item1 => $value1){
                         
                         $bobot = \App\Bobot::where("kriteria_id", $item1)->first();
@@ -125,11 +148,14 @@
                         $temp_hasil = $value1 * $bobot->nilai;
                 
                         array_push($hasil_per_al, $temp_hasil);
+                        
                     }
 
                     $hasil_alternatif[$key] =  array_sum($hasil_per_al);
+                    
                 }
 
+                
                 arsort($hasil_alternatif);
               @endphp 
 
