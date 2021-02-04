@@ -29,19 +29,19 @@ class KriteriaSeeder extends Seeder
         ]);
 
         DB::table('bobot')->insert([
-            ["id" => 1, "kriteria_id" => 1,  "nilai"  => 0.05],
-            ["id" => 2, "kriteria_id" => 2,  "nilai"  => 0.025],
-            ["id" => 3, "kriteria_id" => 3,  "nilai"  => 0.015],
-            ["id" => 4, "kriteria_id" => 4,  "nilai"  => 0.02],
-            ["id" => 5, "kriteria_id" => 5,  "nilai"  => 0.010],
-            ["id" => 6, "kriteria_id" => 6,  "nilai"  => 0.03],
-            ["id" => 7, "kriteria_id" => 7,  "nilai"  => 0.05],
-            ["id" => 8, "kriteria_id" => 8,  "nilai"  => 0.04],
-            ["id" => 9, "kriteria_id" => 9,  "nilai"  => 0.05],
-            ["id" => 10, "kriteria_id" => 10, "nilai"  => 0.04],
-            ["id" => 11, "kriteria_id" => 11, "nilai"  => 0.010],
-            ["id" => 12, "kriteria_id" => 12, "nilai"  => 0.010],
-            ["id" => 13, "kriteria_id" => 13, "nilai"  => 0.02],
+            ["id" => 1, "kriteria_id"   => 1,  "nilai"  => 0.05],
+            ["id" => 2, "kriteria_id"   => 2,  "nilai"  => 0.25],
+            ["id" => 3, "kriteria_id"   => 3,  "nilai"  => 0.15],
+            ["id" => 4, "kriteria_id"   => 4,  "nilai"  => 0.02],
+            ["id" => 5, "kriteria_id"   => 5,  "nilai"  => 0.10],
+            ["id" => 6, "kriteria_id"   => 6,  "nilai"  => 0.03],
+            ["id" => 7, "kriteria_id"   => 7,  "nilai"  => 0.05],
+            ["id" => 8, "kriteria_id"   => 8,  "nilai"  => 0.04],
+            ["id" => 9, "kriteria_id"   => 9,  "nilai"  => 0.05],
+            ["id" => 10, "kriteria_id"  => 10, "nilai"  => 0.04],
+            ["id" => 11, "kriteria_id"  => 11, "nilai"  => 0.10],
+            ["id" => 12, "kriteria_id"  => 12, "nilai"  => 0.10],
+            ["id" => 13, "kriteria_id"  => 13, "nilai"  => 0.02],
         ]);
     }
 }

@@ -116,6 +116,7 @@
                     
                     $hasil_per_al = [];
 
+                    
                     foreach($value as $item1 => $value1){
                         
                         $bobot = \App\Bobot::where("kriteria_id", $item1)->first();
@@ -123,11 +124,14 @@
                         $temp_hasil = $value1 * $bobot->nilai;
                 
                         array_push($hasil_per_al, $temp_hasil);
+                        
                     }
 
                     $hasil_alternatif[$key] =  array_sum($hasil_per_al);
+                    
                 }
 
+                
                 arsort($hasil_alternatif);
               @endphp 
 
