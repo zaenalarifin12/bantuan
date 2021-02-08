@@ -32,12 +32,12 @@
                     <div class="form-group">
                       <label class="bmd-label-floating" >Jenis Kelamin</label>
                       <select name="jekel" id="" required class="fbrowser-default custom-select">
-                        @if ($alternatif->jekel == "laki-laki")
-                          <option value="laki-laki" selected>laki-laki</option>
-                          <option value="perempuan">perempuan</option>
-                        @elseif ($alternatif->jekel == "perempuan")
-                          <option value="laki-laki">laki-laki</option>
-                          <option value="perempuan" selected>perempuan</option>
+                        @if ($alternatif->jekel == "L")
+                          <option value="L" selected>laki-laki</option>
+                          <option value="P">perempuan</option>
+                        @elseif ($alternatif->jekel == "P")
+                          <option value="L">laki-laki</option>
+                          <option value="P" selected>perempuan</option>
                         @endif
                         
                       </select>

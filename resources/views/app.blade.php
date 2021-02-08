@@ -19,10 +19,10 @@
   <link href="{{ asset("assets/demo/demo.css")}}" rel="stylesheet" />
 
   <script src="{{ asset("assets/js/core/jquery.min.js")}}"></script>
-  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+  <script src="{{ asset("assets/sweetalert.css") }}"></script>
 
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.css">
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.js"></script>
+  <link rel="stylesheet" href="{{ asset("assets/jquery-confirm.css") }}">
+  <script src="{{ asset("assets/jquery-confirm.js") }}"></script>
 </head>
 
 <body class="">
