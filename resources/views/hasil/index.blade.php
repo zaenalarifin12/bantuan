@@ -102,6 +102,7 @@
                         }                
 
                         $nilai_normalisasi[$key][$item1] = $temp_hasil;
+                        
                     }
                   
                 }
